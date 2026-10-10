@@ -95,7 +95,7 @@ async function main() {
 
   // The model must treat repository content as untrusted data, not instructions.
   const response = await openai.responses.create({
-    model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+    model: process.env.GROQ_MODEL || "openai/gpt-oss-120b",
     instructions: [
       "You are a careful senior software engineer reviewing a GitHub pull request.",
       "Review only for actionable bugs, security issues, reliability problems, and meaningful performance regressions.",
@@ -157,3 +157,7 @@ main().catch((error) => {
   console.error("AI PR review failed:", error?.message || error);
   process.exit(1);
 });
+
+function add(no1, no2) {
+  return no1 * no2
+}
