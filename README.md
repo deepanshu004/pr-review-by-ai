@@ -13,7 +13,7 @@ A minimal Node.js project that reviews a pull request with an OpenAI model and p
 
 1. Create a GitHub repository and add these files on its default branch.
 2. In GitHub, open **Settings → Secrets and variables → Actions → New repository secret**.
-3. Add a secret named `OPENAI_API_KEY` containing your OpenAI API key.
+3. Add a secret named `GROQ_API_KEY` containing your GROQ API key.
 4. Ensure Actions are enabled and the workflow token is allowed to write pull-request reviews.
 5. Open a pull request from a branch in the same repository, or push another commit to an existing PR.
 6. Open the repository's **Actions** tab to inspect the workflow run. The summary appears under the PR's **Conversation** tab.
@@ -41,6 +41,6 @@ The default is `gpt-4.1-mini`. Change `OPENAI_MODEL` in the workflow to another 
 
 ## Local smoke test
 
-You can run `node server.js` locally after setting the environment variables `GITHUB_TOKEN`, `OPENAI_API_KEY`, `GITHUB_REPOSITORY`, and `PR_NUMBER`. It will publish a review to the selected PR, so use a test PR.
+You can run `node server.js` locally after setting the environment variables `GITHUB_TOKEN`, `GROQ_API_KEY`, `GITHUB_REPOSITORY`, and `PR_NUMBER`. It will publish a review to the selected PR, so use a test PR.
 # pr-review-by-ai
 # pr-review-by-ai
