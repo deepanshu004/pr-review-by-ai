@@ -158,6 +158,3 @@ main().catch((error) => {
   process.exit(1);
 });
 
-function add(no1, no2) {
-  return no1 * no2
-}
