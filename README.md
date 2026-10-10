@@ -43,3 +43,4 @@ The default is `gpt-4.1-mini`. Change `OPENAI_MODEL` in the workflow to another 
 
 You can run `node server.js` locally after setting the environment variables `GITHUB_TOKEN`, `OPENAI_API_KEY`, `GITHUB_REPOSITORY`, and `PR_NUMBER`. It will publish a review to the selected PR, so use a test PR.
 # pr-review-by-ai
+# pr-review-by-ai
