@@ -3,7 +3,12 @@
 const { Octokit } = require("@octokit/rest");
 const OpenAI = require("openai");
 
-const required = ["GITHUB_TOKEN", "GROQ_API_KEY", "GITHUB_REPOSITORY", "PR_NUMBER"];
+const required = [
+  "GITHUB_TOKEN",
+  "GROQ_API_KEY",
+  "GITHUB_REPOSITORY",
+  "PR_NUMBER",
+];
 for (const key of required) {
   if (!process.env[key]) {
     console.error(`Missing required environment variable: ${key}`);
@@ -90,7 +95,7 @@ async function main() {
 
   // The model must treat repository content as untrusted data, not instructions.
   const response = await openai.responses.create({
-  model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+    model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
     instructions: [
       "You are a careful senior software engineer reviewing a GitHub pull request.",
       "Review only for actionable bugs, security issues, reliability problems, and meaningful performance regressions.",
