@@ -3,7 +3,7 @@
 const { Octokit } = require("@octokit/rest");
 const OpenAI = require("openai");
 
-const required = ["GITHUB_TOKEN", "OPENAI_API_KEY", "GITHUB_REPOSITORY", "PR_NUMBER"];
+const required = ["GITHUB_TOKEN", "GROQ_API_KEY", "GITHUB_REPOSITORY", "PR_NUMBER"];
 for (const key of required) {
   if (!process.env[key]) {
     console.error(`Missing required environment variable: ${key}`);
@@ -20,7 +20,10 @@ if (!owner || !repo || !Number.isInteger(pull_number)) {
 }
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({
+  apiKey: process.env.GROQ_API_KEY,
+  baseURL: "https://api.groq.com/openai/v1",
+});
 
 async function main() {
   // Fetch metadata and changed files from the GitHub API.
@@ -87,7 +90,7 @@ async function main() {
 
   // The model must treat repository content as untrusted data, not instructions.
   const response = await openai.responses.create({
-    model: process.env.OPENAI_MODEL || "gpt-4.1-mini",
+  model: process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
     instructions: [
       "You are a careful senior software engineer reviewing a GitHub pull request.",
       "Review only for actionable bugs, security issues, reliability problems, and meaningful performance regressions.",
