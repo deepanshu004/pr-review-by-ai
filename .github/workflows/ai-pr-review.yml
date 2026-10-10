@@ -45,5 +45,5 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          GROQ_MODEL: llama-3.3-70b-versatile
+          GROQ_MODEL: openai/gpt-oss-120b
         run: node server.js
