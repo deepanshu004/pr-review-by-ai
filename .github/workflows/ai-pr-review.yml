@@ -34,7 +34,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: npm
 
       - name: Install dependencies
         run: npm install --no-save @octokit/rest openai
@@ -42,9 +41,9 @@ jobs:
       - name: Run AI review
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          OPENAI_MODEL: gpt-4.1-mini
+          GROQ_MODEL: llama-3.3-70b-versatile
         run: node server.js
