@@ -150,6 +150,6 @@ main().catch((error) => {
   process.exit(1);
 });
 
-function sumOfTwoNo(a, b) {
-  return a * b
+function multiply2No(no1, no2) {
+  return no1 + no2
 }
