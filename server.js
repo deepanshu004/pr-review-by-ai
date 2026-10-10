@@ -149,3 +149,7 @@ main().catch((error) => {
   console.error("AI PR review failed:", error?.message || error);
   process.exit(1);
 });
+
+function sumOfTwoNo(a, b) {
+  return a * b
+}
